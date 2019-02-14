@@ -1,0 +1,29 @@
+.track-search-container {
+	position: relative;
+	top: 10px;
+	margin: 0 auto;
+}
+
+.track-search-container input {
+	width:300px;
+
+}
+.track-search-container .ant-btn-primary {
+	margin-left:20px;
+	margin-right:20px
+}
+
+
+.search {
+	margin-left: 5px;
+	cursor: pointer;
+	cursor: pointer;
+  color: white;
+  font-size: 15px;
+}
+
+button {
+	background: none;
+	border: none;
+	outline: none;
+}

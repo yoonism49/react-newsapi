@@ -1,0 +1,15 @@
+.search-list {
+    margin-top:60px;
+}
+.search-list .search-list-image {
+	width: 65%;
+    height: 65%;
+    text-align:center;
+}
+.search-list .search-list-paragrah {
+    text-align:center;
+}
+.search-list .custom-card {
+    height:520px;
+}
+
