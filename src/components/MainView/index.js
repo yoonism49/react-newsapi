@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 const mapStateToProps = (state) => {
 
   return {
-    songs: state.newsReducer.songs ? state.newsReducer.songs : '',
+    news: state.newsReducer.news ? state.newsReducer.news : '',
     viewType: state.newsReducer.viewType,
   };
 

@@ -1,4 +1,7 @@
-export const categoryReducer = (state = {}, action) => {
+const defaultState = {
+  category:'date'
+};
+export const categoryReducer = (state = defaultState, action) => {
   switch (action.type) {
 
   case "SET_CATEGORY":

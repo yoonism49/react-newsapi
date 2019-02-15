@@ -1,39 +1,19 @@
-export const fetchSongsPending = () => {
-  return {
-    type: 'FETCH_SONGS_PENDING'
-  };
-};
-
-export const fetchSongsSuccess = (songs) => {
-  return {
-    type: 'FETCH_SONGS_SUCCESS',
-    songs
-  };
-};
-
-export const fetchSongsError = () => {
-  return {
-    type: 'FETCH_SONGS_ERROR'
-  };
-};
-
-
 export const searchNewsPending = () => {
   return {
-    type: 'SEARCH_SONGS_PENDING'
+    type: 'SEARCH_NEWS_PENDING'
   };
 };
 
-export const searchNewsSuccess = (songs) => {
+export const searchNewsSuccess = (news) => {
   return {
-    type: 'SEARCH_SONGS_SUCCESS',
-    songs
+    type: 'SEARCH_NEWS_SUCCESS',
+    news
   };
 };
 
 export const searchNewsError = () => {
   return {
-    type: 'SEARCH_SONGS_ERROR'
+    type: 'SEARCH_NEWS_ERROR'
   };
 };
 
@@ -41,11 +21,10 @@ export const searchNews = (searchTerm) => {
   return (dispatch, getState)  => {
     const category = getState().categoryReducer.category;
     let request;
-    console.log('category'+category);
     if(category==='date' || category ==='') {
       const today = new Date();
       let dd = today.getDate();
-      let mm = today.getMonth() + 1; //January is 0!
+      let mm = today.getMonth() + 1; 
       
       const yyyy = today.getFullYear();
       if (dd < 10) {
@@ -54,10 +33,10 @@ export const searchNews = (searchTerm) => {
       if (mm < 10) {
         mm = '0' + mm;
       } 
-      request = new Request(`https://newsapi.org/v2/everything?q=${searchTerm}&from=${mm + '-' + dd + '-' + yyyy}&sortBy=publishedAt&apiKey=7ee0d0a6f0c149d2bda693a9027c3121`);
+      request = new Request(`https://newsapi.org/v2/everything?q=${searchTerm}&from=${mm + '-' + dd + '-' + yyyy}&sortBy=publishedAt&apiKey=${getState().tokenReducer.token}`);
     } else 
     {
-      request = new Request(`https://newsapi.org/v2/everything?q=${searchTerm}&sortBy=${getState().categoryReducer.category}&sortBy=publishedAt&apiKey=7ee0d0a6f0c149d2bda693a9027c3121`);
+      request = new Request(`https://newsapi.org/v2/everything?q=${searchTerm}&sortBy=${getState().categoryReducer.category}&sortBy=publishedAt&apiKey=${getState().tokenReducer.token}`);
     }
 
     dispatch(searchNewsPending());
@@ -75,7 +54,7 @@ export const searchNews = (searchTerm) => {
       });
       dispatch(searchNewsSuccess(res.items));
     }).catch(err => {
-      dispatch(fetchNewsError(err));
+      dispatch(searchNewsError(err));
     });
   };
 };

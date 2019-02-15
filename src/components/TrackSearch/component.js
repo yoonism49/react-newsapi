@@ -14,24 +14,13 @@ class TrackSearch extends Component {
 		};
 
 	}
-	
-
 	updateSearchTerm = (e) => {
 	  this.setState({
 	    searchTerm: e.target.value
 	  });
 	}
 	handleChange(value) {
-		console.log('setCategory');
 		this.props.setCategory(value.toLowerCase());
-	}
-	
-	handleBlur() {
-		console.log('blur');
-	}
-	
-	handleFocus() {
-		console.log('focus');
 	}
 	
 	render() {
@@ -45,12 +34,10 @@ class TrackSearch extends Component {
 					<Select
 						showSearch
 						style={{ width: 200 }}
-						placeholder="Select a person"
+						placeholder="Select a category"
 						optionFilterProp="children"
 						onChange={e => this.handleChange(e)}
-						onFocus={this.handleFocus}
-						onBlur={this.handleBlur}
-						filterOption={(input, option) => {console.log('setCategory');this.props.setCategory(input.toLowerCase())}}
+						filterOption={(input) => {this.props.setCategory(input.toLowerCase())}}
 					>
 						<Option value="date">date</Option>
 						<Option value="relevance">relevance</Option>
