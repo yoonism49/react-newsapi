@@ -1,4 +1,4 @@
-# React-NewsApi 🎼🎺🎸🎻🎤
+# React-NewsApi 
 
 This is `react-newsapi`, a React front end client that communicates with the News API : https://newsapi.org/
 
